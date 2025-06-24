@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Elies Madraz | Développeur Informatique</title>
+    
+    <!-- Polices modernes -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6e00ff;
+            --primary-light: #9a4dff;
+            --secondary: #00f7ff;
+            --dark: #0f0a1a;
+            --darker: #080511;
+            --light: #f0eaff;
+            --gray: #2a2438;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary);
+            box-shadow: 0 0 20px rgba(110, 0, 255, 0.2);
+            padding: 20px 40px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            background: 
+                radial-gradient(circle at 70% 30%, rgba(110, 0, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(var(--darker) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-content h2 {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: rgba(240, 234, 255, 0.8);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(110, 0, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(0, 247, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        /* CV Download Section */
+        .cv-download-section {
+            background: var(--gray);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid var(--primary);
+            text-align: center;
+        }
+        
+        .cv-download-section h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .cv-download-section p {
+            margin-bottom: 30px;
+            color: rgba(240, 234, 255, 0.8);
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Presentation Cards */
+        .presentation-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .presentation-card {
+            background: var(--gray);
+            border-radius: 10px;
+            padding: 30px;
+            border-left: 3px solid var(--primary);
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(110, 0, 255, 0.3);
+        }
+        
+        .presentation-card h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .full-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(110, 0, 255, 0.3);
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: var(--gray);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(110, 0, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(110, 0, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(110, 0, 255, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--light);
+            margin: 0 0 5px 0;
+        }
+        
+        .skill-level {
+            font-size: 0.8rem;
+            color: rgba(240, 234, 255, 0.7);
+            font-family: 'DM Mono', monospace;
+        }
+        
+        /* Couleurs spécifiques pour les technologies */
+        .skill-html { color: #e34c26; }
+        .skill-js { color: #f7df1e; }
+        .skill-php { color: #777bb4; }
+        .skill-python { color: #3776ab; }
+        .skill-java { color: #ed8b00; }
+        .skill-sql { color: #00758f; }
+        .skill-git { color: #f05032; }
+        .skill-linux { color: #e95420; }
+        .skill-apache { color: #d22128; }
+        .skill-uml { color: #fabd14; }
+        .skill-fullstack { color: var(--secondary); }
+        .skill-devops { color: #326ce5; }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid rgba(110, 0, 255, 0.2);
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(110, 0, 255, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .project-header {
+            padding: 20px;
+            background: rgba(110, 0, 255, 0.1);
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .project-header h3 {
+            margin: 0;
+            color: var(--secondary);
+        }
+        
+        .project-body {
+            padding: 20px;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(0, 247, 255, 0.1);
+            color: var(--secondary);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-family: 'DM Mono', monospace;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            background: var(--gray);
+            border-radius: 15px;
+            padding: 40px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(110, 0, 255, 0.05);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: rgba(110, 0, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 20px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-label {
+            font-size: 0.9rem;
+            color: rgba(240, 234, 255, 0.7);
+            margin-bottom: 5px;
+        }
+        
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .contact-form {
+            background: var(--gray);
+            border-radius: 15px;
+            padding: 40px;
+            border-right: 3px solid var(--secondary);
+        }
+        
+        .contact-form h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(15, 10, 26, 0.5);
+            border: 1px solid rgba(110, 0, 255, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(110, 0, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110, 0, 255, 0.4);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 5, 17, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--gray);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(110, 0, 255, 0.3);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--primary);
+        }
+        
+        .modal-subtitle {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .modal-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .external-link {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .external-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Click hints */
+        .click-hint {
+            text-align: center;
+            margin-top: -40px;
+            margin-bottom: 40px;
+            color: var(--primary-light);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 80px 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 20px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .skill-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+        .skill-card:nth-child(7) { animation-delay: 0.7s; }
+        .skill-card:nth-child(8) { animation-delay: 0.8s; }
+        .skill-card:nth-child(9) { animation-delay: 0.9s; }
+        .skill-card:nth-child(10) { animation-delay: 1.0s; }
+        .skill-card:nth-child(11) { animation-delay: 1.1s; }
+        .skill-card:nth-child(12) { animation-delay: 1.2s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">ELIES MADRAZ</div>
+        <ul class="nav-menu">
+            <li><a href="#presentation" class="nav-link">Présentation</a></li>
+            <li><a href="#competences" class="nav-link">Compétences</a></li>
+            <li><a href="#projets" class="nav-link">Projets</a></li>
+            <li><a href="#stage" class="nav-link">Expérience</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>PORTFOLIO</h1>
+            <h2>Étudiant en BUT Informatique | Développeur Full Stack</h2>
+            <div class="hero-buttons">
+                <a href="#presentation" class="btn btn-outline">Explorer mon parcours</a>
+               <button onclick="window.open('https://cvdesignr.com/p/66bbd7816b6c1?hl=fr_FR', '_blank')" class="btn btn-primary">
+    <i class="bi bi-download"></i>
+    Télécharger mon CV
+</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Présentation Section -->
+    <section id="presentation" class="section">
+        <h2 class="section-title">Présentation</h2>
+        
+   
+        
+        <p class="click-hint">Cliquez sur les cartes pour voir plus de détails</p>
+        
+        <div class="presentation-container">
+            <div class="presentation-card" onclick="toggleCard(this)">
+                <h3>Mon parcours</h3>
+                <p>Je suis actuellement étudiant en BUT 2 Informatique à l'IUT de Sorbonne Paris Nord, à Villetaneuse. Passionné par l'informatique depuis mon plus jeune âge.</p>
+                <div class="full-content">
+                    <p>Mon intérêt pour l'informatique a débuté dès le lycée avec la spécialité Numérique et Sciences Informatiques (NSI), où j'ai découvert ma passion pour la programmation et les technologies web. C'est à ce moment-là que j'ai compris que je voulais évoluer dans ce domaine.</p>
+                </div>
+            </div>
+            
+            <div class="presentation-card" onclick="toggleCard(this)">
+                <h3>BUT 1ère année</h3>
+                <p>Quand j'ai intégré le BUT 1, je savais que je voulais travailler dans l'informatique, mais je ne savais pas encore dans quel domaine précis.</p>
+                <div class="full-content">
+                    <p>Cette première année a été celle de la découverte : j'y ai appris les fondamentaux de l'algorithmique, de la programmation orientée objet, des bases de données relationnelles, et des systèmes d'exploitation. Mes premiers projets lors des SAE m’ont appris à travailler en groupe, à organiser mon travail, à respecter des délais et à collaborer efficacement.</p>
+                </div>
+            </div>
+            
+            <div class="presentation-card" onclick="toggleCard(this)">
+                <h3>BUT 2ème année</h3>
+                <p>C'est en entrant en BUT 2 que les choses ont vraiment évolué. J'ai gagné en compétences techniques, mais aussi en confiance personnelle.</p>
+                <div class="full-content">
+                    <p>La SAÉ du semestre 3 a été un tournant : nous avons dû concevoir notre propre site web en équipe, en partant de zéro. Pour la première fois, je me suis vraiment investi comme un développeur, pas seulement comme un étudiant.</p>
+                <br>
+                
+                <p>Ça n’a pas été simple. J’ai parfois eu du mal à garder le cap, surtout quand une fonctionnalité refusait de marcher et que je ne comprenais pas pourquoi. Il m’est arrivé de passer des heures sur un bug minuscule, frustré, fatigué, à deux doigts d’abandonner. J’ai appris à me poser les bonnes questions, à faire des pauses pour mieux repartir, à chercher des solutions au lieu de paniquer.</p>
+                 <br>
+                <p>Pour le semestre 4, j’ai vraiment pris en compte tout ce que j’avais appris jusque-là. Les erreurs des projets précédents, les méthodes qui avaient marché, les critiques qu’on m’avait faites. J’ai essayé de ne pas refaire les mêmes bêtises, de mieux m’organiser, d’anticiper. j’ai commencé ce semestre avec un vrai bagage, pas juste des notions techniques.</p>
+                 <br>
+                 <p>Et heureusement, parce que ce semestre, tout s’est intensifié : plus de complexité, plus d’attentes, plus de pression c’était un gros palier.</p>
+                 <br>
+                 <p>Enfin, j’ai appris à mieux me connaître. Je sais maintenant que je travaille avec méthode, que j’avance plus sereinement quand je comprends le sens de ce que je fais. Et j’ai vu que quand un projet me motive, je suis capable de m’investir pleinement, sans qu’on ait besoin de me pousser.</p>
+            </div>
+            </div>
+            <!-- Card 4 -->
+      <div class="presentation-card" onclick="toggleCard(this)">
+        <h3>Projet professionnel</h3>
+        <p>Mon stage en entreprise m'a fait prendre conscience de tout le chemin parcouru. Ce fut une vraie immersion professionnelle, avec un rythme exigeant, des responsabilités réelles, des outils professionnels. J’ai découvert que j’étais capable d’apprendre vite, de m’adapter, de proposer des solutions, et surtout de travailler comme un vrai développeur et mon stage m'a également conforté dans mon envie de faire de l'alternance. Avant même mon stage, j'envisageais déjà cette option.</p>
+        <div class="full-content" style="display:none">
+          <p>Grâce à mon stage, j'ai vu à quel point on apprend vite sur le terrain, et je suis désormais convaincu que le BUT 3 en alternance est la meilleure option pour moi. Cela me permettrait de développer mes compétences tout en acquérant une solide expérience professionnelle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Compétences Section -->
+    <section id="competences" class="section">
+        <h2 class="section-title">Compétences</h2>
+        <p>Technologies et outils que je maîtrise</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="bi bi-code-slash skill-icon skill-html"></i>
+                <h4 class="skill-name">HTML/CSS</h4>
+                <p class="skill-level">Avancé</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-filetype-js skill-icon skill-js"></i>
+                <h4 class="skill-name">JavaScript</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-filetype-php skill-icon skill-php"></i>
+                <h4 class="skill-name">PHP</h4>
+                <p class="skill-level">Avancé</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-filetype-py skill-icon skill-python"></i>
+                <h4 class="skill-name">Python</h4>
+                <p class="skill-level">Avancé</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-filetype-java skill-icon skill-java"></i>
+                <h4 class="skill-name">Java</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-database skill-icon skill-sql"></i>
+                <h4 class="skill-name">SQL</h4>
+                <p class="skill-level">Avancé</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-git skill-icon skill-git"></i>
+                <h4 class="skill-name">Git</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-terminal skill-icon skill-linux"></i>
+                <h4 class="skill-name">Linux</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-server skill-icon skill-apache"></i>
+                <h4 class="skill-name">Apache</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-diagram-3 skill-icon skill-uml"></i>
+                <h4 class="skill-name">UML</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-globe skill-icon skill-fullstack"></i>
+                <h4 class="skill-name">Full Stack</h4>
+                <p class="skill-level">Intermédiaire</p>
+            </div>
+            
+            <div class="skill-card">
+                <i class="bi bi-tools skill-icon skill-devops"></i>
+                <h4 class="skill-name">DevOps</h4>
+                <p class="skill-level">Débutant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dans la section Projets, remplacer la partie actuelle par : -->
+<section id="projets" class="section">
+    <h2 class="section-title">Mes Projets</h2>
+    <p>Situations d'Apprentissage et d'Évaluation réalisées en BUT Informatique</p>
+    
+    <div class="projects-grid">
+        <div class="project-card" onclick="openModal('sae1')">
+            <img src="c:\Users\33769\Downloads\santaneedyou.png" alt="SAÉ Santa Claus" class="project-image">
+            <div class="project-header">
+                <h3>SAÉ S1.02 : Santa Claus</h3>
+            </div>
+            <div class="project-body">
+                <p>Calcul des distances optimales entre villes avec Python</p>
+                <div>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Algorithmie</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" onclick="openModal('sae2')">
+            <img src="c:\Users\33769\Downloads\java.jpg" alt="Calculatrice" class="project-image">
+            <div class="project-header">
+                <h3>SAE R.201 : Ma Calculatrice</h3>
+            </div>
+            <div class="project-body">
+                <p>Modélisation UML et développement en Java</p>
+                <div>
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">UML</span>
+                    <span class="tech-badge">POO</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" onclick="openModal('sae3')">
+            <img src="c:\Users\33769\Downloads\marionnet.jpg" alt="Services réseaux" class="project-image">
+            <div class="project-header">
+                <h3>SAÉ 2.03 : Services réseaux</h3>
+            </div>
+            <div class="project-body">
+                <p>Installation d'un environnement LAMP complet</p>
+                <div>
+                    <span class="tech-badge">Linux</span>
+                    <span class="tech-badge">Apache</span>
+                    <span class="tech-badge">MySQL</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" onclick="openModal('sae4')">
+            <img src="c:\Users\33769\Downloads\ludotech.png" alt="Site web" class="project-image">
+            <div class="project-header">
+                <h3>SAÉ 3.01 : Site web</h3>
+            </div>
+            <div class="project-body">
+                <p>Gestion de collection de jeux de société</p>
+                <div>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge">Full Stack</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" onclick="openModal('sae401')">
+            <img src="c:\Users\33769\Downloads\ludotech.png" alt="Finalisation site web" class="project-image">
+            <div class="project-header">
+                <h3>SAÉ 4.01 : Finalisation du site web</h3>
+            </div>
+            <div class="project-body">
+                <p>Développement complet d'une application web pour l'université</p>
+                <div>
+                    <span class="tech-badge">Full Stack</span>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">SQL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('ia-art')">
+            <img src="c:\Users\33769\OneDrive\Images\b236875ab8c4845e74c78b8478e149e6.jpeg" alt="Le Monde selon l'IA" class="project-image">
+            <div class="project-header">
+                <h3>Sortie pédagogique - Le Monde selon l'IA</h3>
+            </div>
+            <div class="project-body">
+                <p>Visite de l'exposition sur l'intelligence artificielle au Jeu de Paume</p>
+                <div>
+                    <span class="tech-badge">IA</span>
+                    <span class="tech-badge">Art numérique</span>
+                    <span class="tech-badge">Éthique</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="project-card" onclick="openModal('capitales')">
+    <img src="c:\Users\33769\Downloads\208548_cc7983eff2.jpg" alt="Site des capitales" class="project-image">
+    <div class="project-header">
+        <h3>Ce dont je suis fier</h3>
+    </div>
+    <div class="project-body">
+        <p>Site éducatif sur les capitales des pays du monde</p>
+        <div>
+            <span class="tech-badge">HTML/CSS</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">Full Stack</span>
+        </div>
+    </div>
+</div>
+</section>
+
+ <!-- Stage Section -->
+<section id="stage" class="section">
+  <h2 class="section-title">Expérience professionnelle</h2>
+  <p class="click-hint">Cliquez sur les cartes pour voir plus de détails</p>
+  
+  <div class="presentation-container">
+    <!-- Carte 1 -->
+    <div class="presentation-card" onclick="toggleCard(this)">
+      <h3>Mon stage</h3>
+      <p>Pendant ma formation en BUT Informatique, j'ai eu l'opportunité de réaliser mon tout premier stage en entreprise. Honnêtement, je ne savais pas trop à quoi m'attendre au début, mais ça a été une expérience vraiment enrichissante, autant sur le plan technique que humain.</p>
+      <div class="full-content" style="display:none">
+        <p>Dès les premiers jours, j'ai dû m'adapter à un environnement que je ne connaissais pas : des outils professionnels, un rythme de travail soutenu, et surtout une vraie équipe avec des responsabilités. Ce n'était pas toujours simple, mais j'ai vite compris que c'était justement ça qui me faisait progresser.</p>
+        <p>Ce que j'ai vraiment apprécié, c'est l'ambiance de l'équipe. Les collègues étaient accessibles, toujours prêts à m'expliquer ou à me guider sans me faire sentir "le stagiaire de service". On m'a fait confiance, on m'a inclus dans les échanges, et ça m'a permis de prendre confiance en moi et en mes compétences.</p>
+      </div>
+    </div>
+    
+    <!-- Carte 2 -->
+    <div class="presentation-card" onclick="toggleCard(this)">
+      <h3>Réalisations et apprentissages</h3>
+      <p>Quelque chose qui m'a marqué, c'est le rythme. Il fallait être autonome, rapide, et précis. Au début, c'était un peu stressant, mais j'ai fini par trouver mon rythme.</p>
+      <div class="full-content" style="display:none">
+        <p>J'ai aussi découvert des façons de travailler plus organisées que ce que je connaissais : les réunions régulières, les outils de gestion de projet, le suivi des tâches, tout cela m'a montré à quel point une bonne organisation fait toute la différence dans un projet informatique. J'ai aimé cette structure et le fait de voir concrètement l'avancement des missions.</p>
+        <p>Enfin, ce stage m'a beaucoup appris sur moi-même. J'ai réalisé que ce que j'aime vraiment, c'est résoudre des problèmes concrets, contribuer à des projets utiles et collaborer avec des gens motivés. Ça m'a donné encore plus envie de continuer dans cette voie et de devenir développeur web.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <p>N'hésitez pas à me contacter pour discuter d'opportunités ou de projets</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Mes informations</h3>
+                
+                <div class="contact-item">
+                    <i class="bi bi-envelope contact-icon"></i>
+                    <div class="contact-text">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">eliesmadraz23@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt contact-icon"></i>
+                    <div class="contact-text">
+                        <div class="contact-label">Localisation</div>
+                        <div class="contact-value">Région Parisienne, France</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="bi bi-mortarboard contact-icon"></i>
+                    <div class="contact-text">
+                        <div class="contact-label">Formation</div>
+                        <div class="contact-value">BUT Informatique - IUT Sorbonne Paris Nord</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="bi bi-briefcase contact-icon"></i>
+                    <div class="contact-text">
+                        <div class="contact-label">Recherche</div>
+                        <div class="contact-value">Alternance BUT 3 Informatique</div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/Elies7/test1" target="_blank" class="social-link">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/elies-madraz-7686b3310/" target="_blank" class="social-link">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="mailto:eliesmadraz23@gmail.com" class="social-link">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Envoyez-moi un message</h3>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nom complet</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Adresse email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Sujet</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required placeholder="Décrivez votre projet, vos besoins ou toute question que vous pourriez avoir..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="bi bi-send"></i>
+                        Envoyer le message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+     <!-- Modals SAE -->
+  <!-- SAE 1 Modal -->
+  <div id="sae1-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('sae1')">&times;</span>
+      <div class="modal-body">
+        <h3 style="color: var(--secondary); margin-top: 0;">SAÉ S1.02 : Santas Claus</h3>
+        <p>Dans cette SAÉ portant sur le langage de programmation Python, l'objectif était de calculer les distances entre toutes les paires de villes et de les stocker dans un dictionnaire de distances. Ce projet visait à préparer les données nécessaires pour résoudre des problèmes de routage, comme trouver le chemin le plus court ou le tour le plus intéressant d'une tournée de villes.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai fait durant cette SAÉ</h4>
+        <p>J'ai commencé par définir les coordonnées GPS des villes impliquées dans l'étude, en les stockant dans un dictionnaire pour un accès facile.<br>
+        Ensuite, j'ai créé un dictionnaire imbriqué pour stocker les distances entre chaque paire de villes. Pour chaque ville, le dictionnaire contient un autre dictionnaire avec les autres villes comme clés et les distances correspondantes comme valeurs.<br>
+        Enfin, j'ai écrit des tests pour vérifier que chaque fonction produisait les résultats attendus, garantissant ainsi la fiabilité du code.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai appris et les compétences que j'ai acquises durant cette SAÉ</h4>
+        <p>J'ai appris à créer et à manipuler des dictionnaires imbriqués pour stocker des informations structurées de manière efficace.<br>
+        J'ai appris à utiliser des formules géométriques pour calculer les distances entre deux points sur une carte en utilisant leurs coordonnées GPS. J'ai appris l'importance de documenter chaque partie de mon code avec des commentaires clairs et explicatifs.<br>
+        Ayant déjà une expérience préalable en Python, j'ai pu aborder cette tâche avec une certaine facilité, me concentrant davantage sur l'optimisation et la structure des données.<br>
+        La réalisation de cette SAÉ m'a permis de développer davantage des compétences techniques en programmation Python et en manipulation de données, tout en renforçant des compétences transverses essentielles telles que la gestion de projet, le travail d'équipe et la communication. Grâce à mon expérience préalable en Python, j'ai pu aborder les défis techniques avec plus de facilité et me concentrer sur l'optimisation et la structure des données.</p>
+      </div>
+    </div>
+  </div>
+
+
+     <!-- SAE 2 Modal -->
+  <div id="sae2-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('sae2')">&times;</span>
+      <div class="modal-body">
+        <h3 style="color: var(--secondary); margin-top: 0;">SAE R.201: Ma Calculatrice</h3>
+        <p>L'objectif du projet est de modéliser en UML et coder en java une calculatrice effectuant des opérations sur des nombres entiers. On dispose des opérations suivantes : l'addition (+), la soustraction (-), la multiplication (*) et la division entière (/) de deux nombres entiers, par exemple 5+3.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai fait durant cette SAÉ</h4>
+        <p>Pour commencer, j'ai créé un diagramme UML pour modéliser une calculatrice simple en Java. J'ai identifié deux classes principales : Operation et Nombre.<br>
+        Pour la classe Nombre, j'ai ajouté un constructeur pour initialiser la valeur du nombre, une méthode valeur() pour retourner cette valeur, et une méthode toString() pour convertir cette valeur en chaîne de caractères.<br>
+        Enfin, j'ai implémenté des sous-classes de Operation comme Addition, Soustraction, etc., en les étendant et en implémentant la méthode valeur() pour chacune, en fonction de l'opération spécifique.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai appris et les compétences que j'ai acquises durant cette SAÉ</h4>
+        <p>J'ai appris à utiliser UML pour représenter de manière visuelle la structure et les interactions entre les différentes classes.<br>
+        J'ai renforcé mes compétences en Java, notamment en utilisant les principes de l'orienté objet tels que l'encapsulation, l'héritage, et le polymorphisme. J'ai appliqué ces concepts pour créer des classes comme Operation et Nombre.<br>
+        J'ai acquis l'habitude de documenter mon code de manière claire et concise, ce qui facilite la compréhension pour moi-même et pour d'autres développeurs.<br>
+        La réalisation de cette SAÉ m'a permis de développer différentes compétences techniques en informatique, notamment en modélisation UML et en programmation Java pour développer une calculatrice fonctionnelle. Cette expérience m'a permis de développer mes compétences en modélisation UML. Ces compétences sont essentielles pour ma progression professionnelle dans le domaine de l'informatique et me préparent à relever avec succès des défis plus complexes dans mes futurs projets.</p>
+      </div>
+    </div>
+  </div>
+
+
+ <!-- SAE 3 Modal -->
+  <div id="sae3-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('sae3')">&times;</span>
+      <div class="modal-body">
+        <h3 style="color: var(--secondary); margin-top: 0;">SAÉ 2.03 : Installation de services réseaux</h3>
+        <p>Objectif de la SAÉ et mettre en place un service réseau. Nous avons choisi de mettre en place un environnement LAMP (acronyme désignant l'ensemble Linux, Apache, Mysql ou MariaDB, PHP).</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai fait durant cette SAÉ</h4>
+        <p>J'ai installé et configuré le système de gestion de bases de données MySQL ou MariaDB, en créant des bases de données.<br>
+        J'ai appris à installer un environnement LAMP, incluant Linux, Apache, MariaDB, et PHP, sur un disque dur externe.<br>
+        J'ai dû chercher par moi-même des solutions à des problèmes spécifiques, ce qui a renforcé ma capacité à apprendre de manière autonome.<br>
+        Utilisation d'outils comme Wireshark pour analyser le trafic réseau, comprendre les protocoles et identifier des informations encapsulées.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai appris et les compétences que j'ai acquises durant cette SAÉ</h4>
+        <p>J'ai appris à installer et configurer un environnement LAMP (Linux, Apache, MariaDB, PHP). Cela comprend des compétences spécifiques comme l'utilisation des commandes xzcat et dd pour manipuler des images disque et configurer des services réseau sur Linux.<br>
+        J'ai appris des commandes Unix telles que 'dmesg' pour gérer les périphériques, 'tar', 'chown', 'cp', et 'mv' pour gérer les fichiers, et 'sudo' pour exécuter des commandes nécessitant des privilèges administratifs.<br>
+        J'ai appris à quoi servait Wireshark.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- SAE 4 Modal -->
+  <div id="sae4-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('sae4')">&times;</span>
+      <div class="modal-body">
+        <h3 style="color: var(--secondary); margin-top: 0;">SAÉ R.301 : Site web</h3>
+        <p>L'objectif de cette SAÉ était de répondre à un besoin concret de l'Université Sorbonne Paris Nord, qui héberge une collection de plus de 17 000 jeux de société. Jusqu'à présent, la gestion de cette collection s'effectuait via un fichier Excel unique, peu adapté aux besoins actuels. Il fallait donc développer un site web complet permettant de nettoyer les données, de les structurer dans une base de données, et de gérer l'inventaire via une interface moderne et évolutive.</p>
+        
+        <p>
+          <strong>Lien vers le projet :</strong> 
+          <a href="https://ludotech.kesug.com" target="_blank" class="external-link">
+            https://ludotech.kesug.com
+            <i class="bi bi-box-arrow-up-right" style="margin-left: 5px;"></i>
+          </a>
+        </p>
+
+        <h4 class="modal-subtitle">Ce que j'ai fait durant cette SAÉ</h4>
+        <p>J'ai tout d'abord travaillé sur la phase de nettoyage des données à l'aide de scripts Python. Cela consistait à identifier les champs vides, corriger les doublons, harmoniser les formats de date, et normaliser les noms d'auteurs ou d'éditeurs.<br>
+        J'ai ensuite conçu une base de données relationnelle pour structurer l'ensemble des informations : jeux, éditeurs, auteurs, catégories, années, etc. Cette structure a été pensée pour être à la fois cohérente et évolutive, avec des relations bien définies et des contraintes d'intégrité.<br>
+        Une fois les données nettoyées, j'ai développé un script d'importation permettant de charger automatiquement le contenu du fichier Excel vers la base de données.<br>
+        Ensuite, j'ai participé au développement de l'interface web de gestion, qui comprend un tableau de bord, des fiches détaillées pour chaque jeu, un moteur de recherche avancée et des filtres dynamiques. L'application intègre aussi la gestion des utilisateurs et des rôles, un suivi des modifications, et la possibilité d'ajouter de nouvelles collections avec des spécificités propres.</p>
+        
+        <h4 class="modal-subtitle">Ce que j'ai appris et les compétences que j'ai acquises durant cette SAÉ</h4>
+        <p>Ce projet m'a permis de travailler sur l'ensemble du cycle de développement d'un site web : analyse du besoin, nettoyage de données, modélisation de base, scripts d'importation, interface utilisateur, et documentation.<br>
+        J'ai approfondi mes compétences en Python pour le traitement des données, en SQL pour la structuration de la base, et en développement full-stack.<br>
+        J'ai aussi compris l'importance d'un code clair, réutilisable et bien documenté, ainsi que d'une architecture pensée pour l'évolutivité.<br>
+        Cette SAÉ m'a également permis de développer des compétences transversales, comme la gestion de projet, la prise d'initiative, et la documentation technique.<br>
+        Le projet étant réalisé en équipe, nous avons dû mettre en place une répartition claire des tâches selon les compétences et affinités de chacun. Cette organisation nous a permis de gagner en efficacité : pendant que certains travaillaient sur le modèle de données, d'autres développaient les scripts de nettoyage ou l'interface web.<br>
+        De mon côté, j'ai souvent été force de proposition, notamment pour structurer le plan de travail et assurer le lien entre les différentes parties du projet.</p>
+      </div>
+    </div>
+  </div>
+
+      <div id="sae401-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('sae401')">&times;</span>
+    <div class="modal-body">
+      <h3 style="color: var(--secondary); margin-top: 0;">SAÉ 4.01 : Finalisation du site web</h3>
+      <p>Cette SAÉ avait pour but de finaliser le projet débuté lors de la SAÉ 3.01. L'objectif de cette SAÉ était de répondre à un besoin concret de l'Université Sorbonne Paris Nord, qui héberge une collection de plus de 17 000 jeux de société. Jusqu'à présent, la gestion de cette collection s'effectuait via un fichier Excel unique, peu adapté aux besoins actuels. Il fallait donc développer un site web complet permettant de nettoyer les données, de les structurer dans une base de données, et de gérer l'inventaire via une interface moderne et évolutive.</p>
+      <p>
+          <strong>Lien vers le projet :</strong> 
+          <a href="https://ludotech.kesug.com" target="_blank" class="external-link">
+            https://ludotech.kesug.com
+            <i class="bi bi-box-arrow-up-right" style="margin-left: 5px;"></i>
+          </a>
+        </p>
+      <h4 class="modal-subtitle">Ce que j’ai fait durant cette SAÉ</h4>
+      <p>Durant la SAÉ 4.01, nous avons repris ce projet pour le transformer en un site complet, utilisable en conditions réelles. Nous avons amélioré l’interface en la rendant plus intuitive, plus fluide et plus ergonomique : les formulaires ont été revus, les affichages retravaillés, la navigation optimisée. J’ai notamment ajouté un tableau de bord clair, des fiches de jeux détaillées, un moteur de recherche performant avec filtres dynamiques, et un système de gestion des utilisateurs avec rôles. Côté back-end, j'ai renforcé la sécurité et fiabilisé les traitements, avec une meilleure gestion des erreurs et des contrôles plus stricts sur les entrées utilisateurs. J’ai également participé à la mise en place d’un historique des modifications, à l’ajout de fonctionnalités avancées comme la gestion de collections personnalisées, et à la documentation technique complète du projet. Par rapport à la version de S3, nous avons donc significativement amélioré l’architecture, la qualité du code, la stabilité, l'expérience utilisateur et la maintenabilité de l’application.</p>
+      <h4 class="modal-subtitle">Ce que j’ai appris et les compétences que j’ai acquises durant cette SAÉ</h4>
+      <p>Ce projet m’a permis de progresser à la fois sur le plan technique et transversal. Durant la SAÉ 3.01, j’ai approfondi mes compétences en Python pour le traitement et le nettoyage de données, ainsi qu’en SQL pour la modélisation et la gestion d’une base relationnelle. J’ai appris à structurer des données brutes pour les rendre exploitables dans un site web. La SAÉ 4.01 m’a permis de consolider mes compétences en développement full-stack, notamment sur la partie front-end et sur la logique métier. J’ai aussi développé des compétences en gestion de projet, en particulier en organisation d’équipe, en planification et en documentation technique. Travailler sur un projet concret, réalisé en équipe et destiné à un véritable utilisateur, m’a sensibilisé à l’importance de produire un code clair, structuré mais aussi de penser l’interface et les fonctionnalités dans une logique utilisateur. Ce projet a marqué une véritable montée en compétences : là où la SAÉ 3.01 m’a permis de poser les bases techniques du site mais c’est avec la SAÉ 4.01 que j’ai pu vraiment aller au bout des choses. J’ai pris du recul, consolidé ce qui avait été fait, et apporté de vraies améliorations pour livrer un site complet, adapté aux besoins réels. Ce travail m’a permis de mettre en pratique tout ce que j’ai appris jusque-là, de mieux comprendre les enjeux d’un projet abouti, et surtout d’aboutir à un résultat final dont je suis vraiment fier.</p>
+    </div>
+  </div>
+</div>
+
+<!-- IA Art Modal -->
+<div id="ia-art-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('ia-art')">&times;</span>
+        <div class="modal-body">
+            <h3 style="color: var(--secondary); margin-top: 0;">Sortie pédagogique - Le Monde selon l'IA</h3>
+            <p>📍 Jeu de Paume, Paris — juin 2025</p>
+            
+            <p>Cette sortie au Jeu de Paume a été une vraie découverte pour moi. L'exposition "Le Monde selon l'IA" ne montrait pas des robots ou du code comme je m'y attendais, mais des œuvres d'art, des installations visuelles, des vidéos, des sculptures. On avançait lentement, entre chaque pièce, en prenant le temps d'observer, de comprendre, de se laisser surprendre.</p>
+            
+            <h4 class="modal-subtitle">Œuvres marquantes</h4>
+            <p>Une des œuvres qui m'a le plus marqué, c'est "Faces of ImageNet" de Trevor Paglen. En me plaçant devant un écran, l'IA me scannait et m'attribuait des étiquettes automatiques. Le résultat était absurde parfois même choquant. C'était drôle sur le moment, mais ça m'a fait réfléchir au sérieux des biais présents dans les bases de données utilisées par les intelligences artificielles.</p>
+            
+            <p>J'ai aussi beaucoup aimé "The Organ" de Christian Marclay : un piano connecté aux réseaux sociaux, où chaque touche déclenchait des extraits vidéo. L'installation était à la fois ludique et critique. Elle montrait à quel point nos données sont transformées en contenu et à quel point on en perd le contrôle.</p>
+            
+            <h4 class="modal-subtitle">Ce que j'ai retenu</h4>
+            <p>J'ai beaucoup aimé cette sortie, car elle m'a fait voir l'IA sous un jour complètement différent. J'ai apprécié la façon dont l'exposition mêlait art et technologie pour poser des questions importantes sur notre société.</p>
+            
+            <p>Cette expérience m'a ouvert les yeux sur les dimensions éthiques et sociales de l'intelligence artificielle, au-delà de ses aspects purement techniques. Cela m'a donné envie d'explorer davantage ces questions dans mes futurs projets informatiques.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Capitales Modal -->
+<div id="capitales-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('capitales')">&times;</span>
+        <div class="modal-body">
+            <h3 style="color: var(--secondary); margin-top: 0;">Projet personnel : Capitales du monde</h3>
+            <p>Projet en cours de développement - Juin 2025</p>
+            
+            <h4 class="modal-subtitle">Description du projet</h4>
+            <p>Je développe actuellement un site web éducatif sur les capitales des pays du monde. Ce projet personnel me permet à la fois d'apprendre les capitales tout en mettant en pratique mes compétences en développement web.</p>
+            
+            <h4 class="modal-subtitle">Ce que j'ai réalisé</h4>
+            <p>J'ai conçu l'architecture du site avec une base de données des pays et de leurs capitales. Le site permettra de :</p>
+            <ul>
+                <li>Rechercher un pays pour connaître sa capitale</li>
+                <li>Apprendre grâce à des quiz interactifs</li>
+                <li>Visualiser les pays sur une carte interactive</li>
+                <li>Suivre sa progression dans l'apprentissage</li>
+            </ul>
+            
+            <h4 class="modal-subtitle">Ce dont je suis le plus fier</h4>
+            
+        <p>Ce dont je suis le plus fier, c’est mon évolution. Il y a encore quelques années, je doutais parfois de ce dont j’étais capable. Aujourd’hui, je me rends compte du chemin parcouru : j’ai su relever des défis et apprendre de mes erreurs. Je suis particulièrement fier de certains projets comme les SAÉ 3.01 et 4.01, où j’ai développé un site web complète pour gérer une collection de jeux de société</p>
+         <br>
+        <p>Aujourd’hui, grâce à mon parcours en BUT, je suis en train de développer mon propre site sur les capitales des pays. Je veux créer ce site parce que j’ai envie d’apprendre toutes les capitales du monde, et le faire à travers un projet personnel me motive encore plus. C’est aussi une bonne manière de mettre en pratique mes compétences techniques, tout en travaillant sur un sujet qui m’intéresse</p>
+            <br>
+            
+          
+        </div>
+    </div>
+</div>
+    <script>
+        // Fonctions de téléchargement
+        function downloadCV() {
+            const cvContent = `ELIES MADRAZ
+Développeur Full Stack | Étudiant BUT Informatique
+
+CONTACT:
+Email: eliesmadraz23@gmail.com
+Localisation: Région Parisienne, France
+
+FORMATION:
+BUT Informatique - IUT Sorbonne Paris Nord (En cours)
+
+COMPÉTENCES:
+- Langages: HTML/CSS, JavaScript, PHP, Python, Java, SQL
+- Outils: Git, Linux, Apache
+- Concepts: UML, Full Stack, DevOps
+
+PROJETS:
+- Site web de gestion de collection (17 000+ jeux)
+- Calculatrice Java avec modélisation UML
+- Système de calcul de distances optimales
+- Configuration environnement LAMP
+
+RECHERCHE:
+Alternance BUT 3 Informatique`;
+
+            downloadFile(cvContent, 'CV_Elies_Madraz.txt', 'text/plain');
+        }
+
+        function downloadSQLLogo() {
+            // Créer un SVG simple pour le logo SQL
+            const sqlLogo = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                <rect width="200" height="200" fill="#00758f"/>
+                <text x="100" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">SQL</text>
+                <rect x="20" y="20" width="160" height="20" fill="white" opacity="0.8"/>
+                <rect x="20" y="50" width="120" height="15" fill="white" opacity="0.6"/>
+                <rect x="20" y="70" width="140" height="15" fill="white" opacity="0.6"/>
+            </svg>`;
+            
+            downloadFile(sqlLogo, 'Logo_SQL.svg', 'image/svg+xml');
+        }
+
+        function downloadLinuxLogo() {
+            // Créer un SVG simple pour le logo Linux
+            const linuxLogo = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                <rect width="200" height="200" fill="#e95420"/>
+                <text x="100" y="120" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white">LINUX</text>
+                <rect x="30" y="30" width="140" height="8" fill="white"/>
+                <rect x="30" y="45" width="140" height="8" fill="white"/>
+                <rect x="30" y="60" width="140" height="8" fill="white"/>
+                <text x="100" y="160" font-family="monospace" font-size="16" text-anchor="middle" fill="white">$ terminal</text>
+            </svg>`;
+            
+            downloadFile(linuxLogo, 'Logo_Linux.svg', 'image/svg+xml');
+        }
+
+        function downloadFile(content, filename, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Gestion des modals
+        function openModal(modalId) {
+            document.getElementById(modalId + '-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId + '-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle cards
+        function toggleCard(card) {
+            const content = card.querySelector('.full-content');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fermer modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes de compétences
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.skill-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
