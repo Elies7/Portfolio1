@@ -195,6 +195,8 @@
             text-align: center;
         }
         
+
+
         .cv-download-section h3 {
             color: var(--secondary);
             margin-bottom: 20px;
@@ -212,6 +214,24 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+
+
+
+        .toggle-btn {
+    margin-top: 15px;
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--secondary);
+    padding: 6px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.toggle-btn:hover {
+    background: rgba(110, 0, 255, 0.2);
+}
         
         /* Presentation Cards */
         .presentation-container {
@@ -711,7 +731,7 @@
             <h2>Étudiant en BUT Informatique | Développeur Full Stack</h2>
             <div class="hero-buttons">
                 <a href="#presentation" class="btn btn-outline">Explorer mon parcours</a>
-               <button onclick="window.open('https://cvdesignr.com/p/66bbd7816b6c1?hl=fr_FR', '_blank')" class="btn btn-primary">
+               <button onclick="window.open('https://cvdesignr.com/p/66bbd7816b6c1', '_blank')" class="btn btn-primary">
     <i class="bi bi-download"></i>
     Télécharger mon CV
 </button>
@@ -727,47 +747,59 @@
         
         <p class="click-hint">Cliquez sur les cartes pour voir plus de détails</p>
         
-        <div class="presentation-container">
-            <div class="presentation-card" onclick="toggleCard(this)">
-                <h3>Mon parcours</h3>
-                <p>Je suis actuellement étudiant en BUT 2 Informatique à l'IUT de Sorbonne Paris Nord, à Villetaneuse. Passionné par l'informatique depuis mon plus jeune âge.</p>
-                <div class="full-content">
-                    <p>Mon intérêt pour l'informatique a débuté dès le lycée avec la spécialité Numérique et Sciences Informatiques (NSI), où j'ai découvert ma passion pour la programmation et les technologies web. C'est à ce moment-là que j'ai compris que je voulais évoluer dans ce domaine.</p>
-                </div>
-            </div>
-            
-            <div class="presentation-card" onclick="toggleCard(this)">
-                <h3>BUT 1ère année</h3>
-                <p>Quand j'ai intégré le BUT 1, je savais que je voulais travailler dans l'informatique, mais je ne savais pas encore dans quel domaine précis.</p>
-                <div class="full-content">
-                    <p>Cette première année a été celle de la découverte : j'y ai appris les fondamentaux de l'algorithmique, de la programmation orientée objet, des bases de données relationnelles, et des systèmes d'exploitation. Mes premiers projets lors des SAE m’ont appris à travailler en groupe, à organiser mon travail, à respecter des délais et à collaborer efficacement.</p>
-                </div>
-            </div>
-            
-            <div class="presentation-card" onclick="toggleCard(this)">
-                <h3>BUT 2ème année</h3>
-                <p>C'est en entrant en BUT 2 que les choses ont vraiment évolué. J'ai gagné en compétences techniques, mais aussi en confiance personnelle.</p>
-                <div class="full-content">
-                    <p>La SAÉ du semestre 3 a été un tournant : nous avons dû concevoir notre propre site web en équipe, en partant de zéro. Pour la première fois, je me suis vraiment investi comme un développeur, pas seulement comme un étudiant.</p>
-                <br>
-                
-                <p>Ça n’a pas été simple. J’ai parfois eu du mal à garder le cap, surtout quand une fonctionnalité refusait de marcher et que je ne comprenais pas pourquoi. Il m’est arrivé de passer des heures sur un bug minuscule, frustré, fatigué, à deux doigts d’abandonner. J’ai appris à me poser les bonnes questions, à faire des pauses pour mieux repartir, à chercher des solutions au lieu de paniquer.</p>
-                 <br>
-                <p>Pour le semestre 4, j’ai vraiment pris en compte tout ce que j’avais appris jusque-là. Les erreurs des projets précédents, les méthodes qui avaient marché, les critiques qu’on m’avait faites. J’ai essayé de ne pas refaire les mêmes bêtises, de mieux m’organiser, d’anticiper. j’ai commencé ce semestre avec un vrai bagage, pas juste des notions techniques.</p>
-                 <br>
-                 <p>Et heureusement, parce que ce semestre, tout s’est intensifié : plus de complexité, plus d’attentes, plus de pression c’était un gros palier.</p>
-                 <br>
-                 <p>Enfin, j’ai appris à mieux me connaître. Je sais maintenant que je travaille avec méthode, que j’avance plus sereinement quand je comprends le sens de ce que je fais. Et j’ai vu que quand un projet me motive, je suis capable de m’investir pleinement, sans qu’on ait besoin de me pousser.</p>
-            </div>
-            </div>
-            <!-- Card 4 -->
-      <div class="presentation-card" onclick="toggleCard(this)">
-        <h3>Projet professionnel</h3>
-        <p>Mon stage en entreprise m'a fait prendre conscience de tout le chemin parcouru. Ce fut une vraie immersion professionnelle, avec un rythme exigeant, des responsabilités réelles, des outils professionnels. J’ai découvert que j’étais capable d’apprendre vite, de m’adapter, de proposer des solutions, et surtout de travailler comme un vrai développeur et mon stage m'a également conforté dans mon envie de faire de l'alternance. Avant même mon stage, j'envisageais déjà cette option.</p>
-        <div class="full-content" style="display:none">
-          <p>Grâce à mon stage, j'ai vu à quel point on apprend vite sur le terrain, et je suis désormais convaincu que le BUT 3 en alternance est la meilleure option pour moi. Cela me permettrait de développer mes compétences tout en acquérant une solide expérience professionnelle.</p>
-        </div>
-      </div>
+        <!-- Présentation Section - cards -->
+<div class="presentation-card">
+    <h3>Mon parcours</h3>
+    <p>Je suis actuellement étudiant en BUT 3 Informatique à l'IUT de Sorbonne Paris Nord, à Villetaneuse. Passionné par l'informatique depuis mon plus jeune âge, j'ai toujours été attiré par le fonctionnement des technologies numériques et la manière dont elles peuvent résoudre des problèmes...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Mon intérêt pour l'informatique a débuté dès le lycée avec la spécialité Numérique et Sciences Informatiques (NSI), où j'ai découvert ma passion pour la programmation et les technologies web. C'est à ce moment-là que j'ai compris que je voulais évoluer dans ce domaine.</p><br>
+        <p>J'ai donc naturellement choisi de m'orienter vers un BUT Informatique, car cette formation propose un équilibre entre théorie et pratique, avec une approche concrète des projets. Ce choix s'est confirmé au fil des années, notamment grâce aux différents projets réalisés en cours et en stage, qui m'ont permis de développer mes compétences techniques et de confirmer mon projet professionnel dans le domaine du développement full stack.</p>
+    </div>
+</div>
+
+<div class="presentation-card">
+    <h3>BUT 1ère année</h3>
+    <p>Quand j'ai intégré le BUT 1, je savais que je voulais travailler dans l'informatique, mais je ne savais pas encore dans quel domaine précis...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Cette première année a été celle de la découverte : j'y ai appris les fondamentaux de l'algorithmique, de la programmation orientée objet, des bases de données relationnelles, et des systèmes d'exploitation. Mes premiers projets lors des SAE m'ont appris à travailler en groupe, à organiser mon travail, à respecter des délais et à collaborer efficacement.</p>
+    </div>
+</div>
+
+<div class="presentation-card">
+    <h3>BUT 2ème année</h3>
+    <p>C'est en entrant en BUT 2 que les choses ont vraiment évolué. J'ai gagné en compétences techniques, mais aussi en confiance personnelle...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>La SAÉ du semestre 3 a été un tournant : nous avons dû concevoir notre propre site web en équipe, en partant de zéro. Pour la première fois, je me suis vraiment investi comme un développeur, pas seulement comme un étudiant.</p><br>
+        <p>Ça n'a pas été simple. J'ai parfois eu du mal à garder le cap, surtout quand une fonctionnalité refusait de marcher et que je ne comprenais pas pourquoi. Il m'est arrivé de passer des heures sur un bug minuscule, frustré, fatigué, à deux doigts d'abandonner. J'ai appris à me poser les bonnes questions, à faire des pauses pour mieux repartir, à chercher des solutions au lieu de paniquer.</p><br>
+        <p>Pour le semestre 4, j'ai vraiment pris en compte tout ce que j'avais appris jusque-là. Les erreurs des projets précédents, les méthodes qui avaient marché, les critiques qu'on m'avait faites. J'ai essayé de ne pas refaire les mêmes bêtises, de mieux m'organiser, d'anticiper. J'ai commencé ce semestre avec un vrai bagage, pas juste des notions techniques.</p><br>
+        <p>Et heureusement, parce que ce semestre, tout s'est intensifié : plus de complexité, plus d'attentes, plus de pression — c'était un gros palier.</p><br>
+        <p>Enfin, j'ai appris à mieux me connaître. Je sais maintenant que je travaille avec méthode, que j'avance plus sereinement quand je comprends le sens de ce que je fais. Et j'ai vu que quand un projet me motive, je suis capable de m'investir pleinement, sans qu'on ait besoin de me pousser.</p>
+    </div>
+</div>
+
+<div class="presentation-card">
+    <h3>BUT 3ème année</h3>
+    <p>Cette troisième année de BUT représente l'aboutissement de tout ce que j'ai appris depuis mon arrivée à l'IUT. J'y suis arrivé avec beaucoup plus d'expérience, de méthode et de confiance qu'en première année...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>La SAÉ 5.01 et mon stage m'ont permis de travailler sur des projets plus proches du monde professionnel, en mobilisant mes compétences en développement, en gestion de projet et en travail d'équipe. J'ai constaté une réelle progression dans ma manière de travailler : je suis plus autonome, plus organisé et plus capable d'analyser un problème avant de chercher une solution.</p><br>
+        <p>L'une de mes principales forces a été ma capacité à rester impliqué et à rechercher des solutions face aux problèmes rencontrés. J'ai également gagné en autonomie lors de mes stages, où j'ai dû m'adapter rapidement à de nouveaux outils et à un environnement professionnel.</p><br>
+        <p>Cette année m'a aussi permis d'identifier certains points à améliorer. J'ai parfois tendance à passer trop de temps sur un problème avant de prendre du recul ou de demander de l'aide. Si c'était à refaire, j'essaierais de mieux équilibrer travail personnel et échanges avec les autres afin d'être plus efficace.</p><br>
+        <p>Avec le recul, je pense avoir atteint un niveau de maturité bien supérieur à celui que j'avais en entrant en BUT. Cette dernière année m'a permis de confirmer mes compétences techniques tout en développant une réflexion plus critique sur ma façon de travailler.</p>
+    </div>
+</div>
+
+<div class="presentation-card">
+    <h3>Projet professionnel</h3>
+    <p>Mes différents stages en entreprise ont été une étape importante de mon parcours et de mon évolution professionnelle. Ils m'ont fait prendre conscience de tout le chemin parcouru...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Grâce à mes stages, j'ai vu à quel point on apprend vite sur le terrain. Ces expériences m'ont convaincu que poursuivre en école d'ingénieur ou en master en apprentissage serait une très bonne option pour moi, car cela me permettrait de continuer à progresser et à me professionnaliser.</p>
+    </div>
+</div>
     </div>
   </section>
 
@@ -777,78 +809,77 @@
         <p>Technologies et outils que je maîtrise</p>
         
         <div class="skills-grid">
-            <div class="skill-card">
-                <i class="bi bi-code-slash skill-icon skill-html"></i>
-                <h4 class="skill-name">HTML/CSS</h4>
-                <p class="skill-level">Avancé</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-filetype-js skill-icon skill-js"></i>
-                <h4 class="skill-name">JavaScript</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-filetype-php skill-icon skill-php"></i>
-                <h4 class="skill-name">PHP</h4>
-                <p class="skill-level">Avancé</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-filetype-py skill-icon skill-python"></i>
-                <h4 class="skill-name">Python</h4>
-                <p class="skill-level">Avancé</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-filetype-java skill-icon skill-java"></i>
-                <h4 class="skill-name">Java</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-database skill-icon skill-sql"></i>
-                <h4 class="skill-name">SQL</h4>
-                <p class="skill-level">Avancé</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-git skill-icon skill-git"></i>
-                <h4 class="skill-name">Git</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-terminal skill-icon skill-linux"></i>
-                <h4 class="skill-name">Linux</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-server skill-icon skill-apache"></i>
-                <h4 class="skill-name">Apache</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-diagram-3 skill-icon skill-uml"></i>
-                <h4 class="skill-name">UML</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-globe skill-icon skill-fullstack"></i>
-                <h4 class="skill-name">Full Stack</h4>
-                <p class="skill-level">Intermédiaire</p>
-            </div>
-            
-            <div class="skill-card">
-                <i class="bi bi-tools skill-icon skill-devops"></i>
-                <h4 class="skill-name">DevOps</h4>
-                <p class="skill-level">Débutant</p>
-            </div>
-        </div>
+    <div class="skill-card">
+        <i class="bi bi-code-slash skill-icon skill-html"></i>
+        <h4 class="skill-name">HTML/CSS</h4>
+        <p class="skill-level">Avancé</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-code-slash skill-icon skill-html"></i>
+        <h4 class="skill-name">C#</h4>
+        <p class="skill-level">Avancé</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-code-slash skill-icon skill-html"></i>
+        <h4 class="skill-name">TeamCenter</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-filetype-js skill-icon skill-js"></i>
+        <h4 class="skill-name">JavaScript</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-filetype-php skill-icon skill-php"></i>
+        <h4 class="skill-name">PHP</h4>
+        <p class="skill-level">Avancé</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-filetype-py skill-icon skill-python"></i>
+        <h4 class="skill-name">Python</h4>
+        <p class="skill-level">Avancé</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-filetype-java skill-icon skill-java"></i>
+        <h4 class="skill-name">Java</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-database skill-icon skill-sql"></i>
+        <h4 class="skill-name">SQL</h4>
+        <p class="skill-level">Avancé</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-git skill-icon skill-git"></i>
+        <h4 class="skill-name">Git</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-terminal skill-icon skill-linux"></i>
+        <h4 class="skill-name">Linux</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-server skill-icon skill-apache"></i>
+        <h4 class="skill-name">Apache</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-diagram-3 skill-icon skill-uml"></i>
+        <h4 class="skill-name">UML</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-globe skill-icon skill-fullstack"></i>
+        <h4 class="skill-name">Full Stack</h4>
+        <p class="skill-level">Intermédiaire</p>
+    </div>
+    <div class="skill-card">
+        <i class="bi bi-tools skill-icon skill-devops"></i>
+        <h4 class="skill-name">DevOps</h4>
+        <p class="skill-level">Débutant</p>
+    </div>
+</div>
     </section>
 
     <!-- Dans la section Projets, remplacer la partie actuelle par : -->
@@ -931,6 +962,38 @@
             </div>
         </div>
 
+
+ <div class="project-card" onclick="openModal('sae501')" style="background-image: url('mangaim.webp'); background-size: cover; background-position: center;">
+  <img src="image.webp" alt="MangAnim" class="project-image">
+  <div class="project-header">
+    <h3>SAÉ 5.01 : Application mobile de recommandation adaptative</h3>
+  </div>
+  <div class="project-body">
+    <p>Conception et développement d'une application mobile de recommandation de mangas et animés</p>
+    <div>
+      <span class="tech-badge">Flutter</span>
+      <span class="tech-badge">Dart</span>
+      <span class="tech-badge">Mobile</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="openModal('musee')">
+    <img src="image1.jpg" alt="Musée des Arts et Métiers" class="project-image">
+    <div class="project-header">
+        <h3>Sortie pédagogique - Musée des Arts et Métiers</h3>
+    </div>
+    <div class="project-body">
+        <p>Visite du musée des Arts et Métiers et découverte de l'histoire des inventions</p>
+        <div>
+            <span class="tech-badge">Histoire</span>
+            <span class="tech-badge">Innovation</span>
+            <span class="tech-badge">Inventions</span>
+        </div>
+    </div>
+</div>
+
+
         <div class="project-card" onclick="openModal('ia-art')">
             <img src="b236875ab8c4845e74c78b8478e149e6.jpeg" alt="Le Monde selon l'IA" class="project-image">
             <div class="project-header">
@@ -970,25 +1033,39 @@
   
   <div class="presentation-container">
     <!-- Carte 1 -->
-    <div class="presentation-card" onclick="toggleCard(this)">
-      <h3>Mon stage</h3>
-      <p>Pendant ma formation en BUT Informatique, j'ai eu l'opportunité de réaliser mon tout premier stage en entreprise. Honnêtement, je ne savais pas trop à quoi m'attendre au début, mais ça a été une expérience vraiment enrichissante, autant sur le plan technique que humain.</p>
-      <div class="full-content" style="display:none">
-        <p>Dès les premiers jours, j'ai dû m'adapter à un environnement que je ne connaissais pas : des outils professionnels, un rythme de travail soutenu, et surtout une vraie équipe avec des responsabilités. Ce n'était pas toujours simple, mais j'ai vite compris que c'était justement ça qui me faisait progresser.</p>
+   <div class="presentation-card">
+    <h3>Mon stage de BUT 2</h3>
+    <p>Dans le cadre de ma deuxième année de BUT Informatique à l'Université Sorbonne Paris Nord, j'ai effectué un stage de 8 semaines au sein de Nesri Discount, une entreprise spécialisée dans la vente en ligne de produits électroménagers et électroniques...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Dès les premiers jours, j'ai dû m'adapter à un environnement que je ne connaissais pas : des outils professionnels, un rythme de travail soutenu, et surtout une vraie équipe avec des responsabilités. Ce n'était pas toujours simple, mais j'ai vite compris que c'était justement ça qui me faisait progresser.</p><br>
         <p>Ce que j'ai vraiment apprécié, c'est l'ambiance de l'équipe. Les collègues étaient accessibles, toujours prêts à m'expliquer ou à me guider sans me faire sentir "le stagiaire de service". On m'a fait confiance, on m'a inclus dans les échanges, et ça m'a permis de prendre confiance en moi et en mes compétences.</p>
-      </div>
     </div>
-    
-    <!-- Carte 2 -->
-    <div class="presentation-card" onclick="toggleCard(this)">
-      <h3>Réalisations et apprentissages</h3>
-      <p>Quelque chose qui m'a marqué, c'est le rythme. Il fallait être autonome, rapide, et précis. Au début, c'était un peu stressant, mais j'ai fini par trouver mon rythme.</p>
-      <div class="full-content" style="display:none">
-        <p>J'ai aussi découvert des façons de travailler plus organisées que ce que je connaissais : les réunions régulières, les outils de gestion de projet, le suivi des tâches, tout cela m'a montré à quel point une bonne organisation fait toute la différence dans un projet informatique. J'ai aimé cette structure et le fait de voir concrètement l'avancement des missions.</p>
-        <p>Enfin, ce stage m'a beaucoup appris sur moi-même. J'ai réalisé que ce que j'aime vraiment, c'est résoudre des problèmes concrets, contribuer à des projets utiles et collaborer avec des gens motivés. Ça m'a donné encore plus envie de continuer dans cette voie et de devenir développeur web.</p>
-      </div>
+</div>
+
+<div class="presentation-card">
+    <h3>Mon stage de BUT 3</h3>
+    <p>Dans le cadre de ma troisième année de BUT Informatique à l'Université Sorbonne Paris Nord, j'ai effectué un stage de 14 semaines au sein de GIMA Transmission Technology...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Dès le début, j'avais à cœur de mettre en pratique les compétences acquises à l'université, mais aussi de découvrir le fonctionnement d'une entreprise et les défis qu'elle rencontre au quotidien dans le monde de l'industrie.</p><br>
+        <p>GIMA (Groupement International de Mécanique Agricole) est une entreprise spécialisée dans la conception et la fabrication de systèmes de transmission destinés aux tracteurs agricoles.</p><br>
+        <p>J'ai intégré le service informatique, plus particulièrement l'équipe de développement, en tant que développeur full stack. Au cours de ce stage, j'ai participé au développement de deux applications web répondant à des besoins internes de l'entreprise.</p>
     </div>
-  </div>
+</div>
+
+<div class="presentation-card">
+    <h3>Réalisations et apprentissages</h3>
+    <p>Mes réalisations, et les compétences développées durant mes expériences en entreprise...</p>
+    <button class="toggle-btn" onclick="toggleCard(event, this)">Voir plus</button>
+    <div class="full-content" style="display:none">
+        <p>Pour mon stage de BUT 3, j'ai eu la chance de développer deux applications web internes en C# avec le framework Blazor de Microsoft .NET. Pour la première application, j'ai travaillé sur la gestion des déclarations des frais kilométriques des employés. Au sein de GIMA, les frais de transport des employés utilisant le bus domicile-travail doivent être déclarés chaque mois afin d'être transmis au service de paie pour traitement et remboursement.</p><br>
+        <p>Pour la seconde application, j'ai travaillé sur une application destinée aux équipes d'usinage, afin de faciliter la gestion des outillages stockés dans le ModulA, une machine de stockage automatisée utilisée pour entreposer les différents articles nécessaires à la production.</p><br>
+        <p>Pour mon stage de BUT 2, j'ai eu à récupérer des informations sur les produits disponibles sur le site du fournisseur Casselin, notamment le nom, la référence et le prix. Ces données devaient ensuite être enregistrées dans un fichier Excel. Le défi principal était le volume important de données : le site comptait plus de 700 produits. J'ai utilisé Python pour faire du scraping et récupérer automatiquement ces informations.</p><br>
+        <p>Enfin, ces stages m'ont beaucoup appris sur moi-même. J'ai réalisé que ce que j'aime vraiment, c'est résoudre des problèmes concrets, contribuer à des projets utiles et collaborer avec des gens motivés. Quelque chose qui m'a marqué également, c'est le rythme. Il fallait être autonome, rapide, et précis. Au début, c'était un peu stressant, mais j'ai fini par trouver mon rythme.</p>
+    </div>
+</div>
+</div>
 </section>
 
 
@@ -1202,6 +1279,46 @@
   </div>
 </div>
 
+  <div id="sae501-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('sae501')">&times;</span>
+    <div class="modal-body">
+      <h3 style="color: var(--secondary); margin-top: 0;">SAÉ 5.01 : Application mobile de recommandation adaptative</h3>
+      <p>L'objectif de cette SAÉ était de concevoir et développer une application mobile capable de recommander du contenu à l'utilisateur tout en fonctionnant de manière autonome, sans serveur distant ni création de compte. Le projet devait intégrer un système de recommandation adaptatif capable d'évoluer en fonction des habitudes d'utilisation de l'utilisateur, tout en garantissant la confidentialité de ses données et une consommation limitée des ressources du smartphone.</p>
+      
+      <h4 class="modal-subtitle">Ce que j’ai fait durant cette SAÉ</h4>
+      <p>J'ai participé à la conception de MangAnim, une application mobile dédiée aux mangas et aux animés. L'objectif était de créer une application accessible à tous, que l'utilisateur soit un passionné de longue date ou un simple débutant souhaitant découvrir cet univers.</p><br>
+        Mon rôle a principalement été de concevoir l'algorithme de recommandation adaptative. Celui-ci analyse le temps passé sur l'application ainsi que les préférences enregistrées en favoris pour proposer du contenu personnalisé. En complément, j'ai développé une page dédiée à la gestion des favoris et une page de statistiques détaillant l'activité de l'utilisateur. J'ai porté une attention particulière à l'optimisation de ces fonctionnalités pour qu'elles restent rapides tout en consommant un minimum de ressources. Enfin, j'ai beaucoup travaillé sur l'interface pour qu'elle soit intuitive et agréable, en intégrant notamment un mode sombre et un mode clair pour améliorer le confort visuel, tout en participant activement à la création de notre identité visuelle, incluant le logo et le slogan.</p>
+      <h4 class="modal-subtitle">Ce que j’ai appris et les compétences que j’ai acquises durant cette SAÉ</h4>
+      <p> Ce projet m’a permis de progresser à la fois sur le plan technique et transversal. Ce projet m'a permis de comprendre les enjeux du développement d'applications mobiles, notamment l'importance de l'optimisation pour que l'application soit performante sans consommer trop d'énergie. J'ai appris à concevoir un système de recommandation intelligent qui fonctionne directement sur le mobile. J’ai aussi développé des compétences en gestion de projet, en particulier en organisation d’équipe, en planification de tâches. Travailler sur un projet concret, réalisé en équipe et destiné à un utilisateur, m’a sensibilisé à l’importance de produire un code clair, structuré mais aussi de penser l’interface et les fonctionnalités dans une logique utilisateur.</p>
+    </div>
+  </div>
+</div>
+
+
+<div id="musee-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('musee')">&times;</span>
+        <div class="modal-body">
+            <h3 style="color: var(--secondary); margin-top: 0;">Sortie pédagogique - Musée des Arts et Métiers</h3>
+            <p>📍 Musée des Arts et Métiers, Paris — février 2026</p>
+
+            <p>Cette sortie pédagogique organisée dans le cadre de mon BUT 3 Informatique m'a plongé dans l'histoire des inventions et des techniques, depuis le XVIIe siècle jusqu'à aujourd'hui. Le musée rassemble plus de 80 000 objets répartis en sept collections : instruments scientifiques, matériaux, construction, communication, énergie, mécanique et transports.</p>
+
+            <h4 class="modal-subtitle">Ce que j'ai découvert</h4>
+            <p>Le fil conducteur de la visite était la devise du musée : la pédagogie par l'objet. Parmi les pièces marquantes, j'ai pu observer la Pascaline de Blaise Pascal, l'une des premières machines à calculer, conçue vers 1652 pour effectuer des additions et soustractions automatiquement. En tant qu'étudiant en informatique, voir cette machine de près était particulièrement marquant : c'est l'un des tout premiers ancêtres de nos ordinateurs modernes.</p>
+            <p>Cette visite m'a rappelé que, derrière chaque objet exposé, il y a une histoire. Chaque invention est le résultat d'idées, de recherches et de nombreuses améliorations au fil du temps. Cela m'a permis de mieux comprendre l'évolution des technologies et de voir comment les innovations d'hier ont contribué à celles que nous utilisons aujourd'hui.
+            </p>    
+    
+
+           
+        </div>
+    </div>
+</div>
+
+
+
+
 <!-- IA Art Modal -->
 <div id="ia-art-modal" class="modal">
     <div class="modal-content">
@@ -1231,7 +1348,7 @@
         <span class="close-modal" onclick="closeModal('capitales')">&times;</span>
         <div class="modal-body">
             <h3 style="color: var(--secondary); margin-top: 0;">Projet personnel : Capitales du monde</h3>
-            <p>Projet en cours de développement - Juin 2025</p>
+            <p>Projet en cours de développement - Mars 2026</p>
             
             <h4 class="modal-subtitle">Description du projet</h4>
             <p>Je développe actuellement un site web éducatif sur les capitales des pays du monde. Ce projet personnel me permet à la fois d'apprendre les capitales tout en mettant en pratique mes compétences en développement web.</p>
@@ -1336,15 +1453,13 @@ Alternance BUT 3 Informatique`;
             document.body.style.overflow = 'auto';
         }
 
-        // Toggle cards
-        function toggleCard(card) {
-            const content = card.querySelector('.full-content');
-            if (content.style.display === 'none' || content.style.display === '') {
-                content.style.display = 'block';
-            } else {
-                content.style.display = 'none';
-            }
-        }
+   function toggleCard(event, btn) {
+    event.stopPropagation();
+    const content = btn.nextElementSibling;
+    const isVisible = window.getComputedStyle(content).display !== 'none';
+    content.style.display = isVisible ? 'none' : 'block';
+    btn.textContent = isVisible ? 'Voir plus' : 'Voir moins';
+}
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
